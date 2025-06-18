@@ -21,8 +21,6 @@ A full-stack task management application that allows users to create, edit, dele
 
 ## 🚀 Getting Started
 
-## 🚀 Getting Started
-
 ### 1. Clone the Repository
 
 Using HTTPS:
