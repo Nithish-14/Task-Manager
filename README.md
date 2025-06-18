@@ -19,6 +19,30 @@ A full-stack task management application that allows users to create, edit, dele
 
 ---
 
+## 🚀 Getting Started
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
+Using HTTPS:
+```bash
+git clone https://github.com/Nithish-14/Task-Manager.git
+```
+
+or Using SSH
+```
+git clone git@github.com:Nithish-14/Task-Manager.git
+```
+
+### 2. Then navigate into the project directory:
+
+```bash
+cd Task-Manager
+```
+
+---
+
 ## ⚙️ Setup Instructions
 
 ### 🔧 Backend Setup
