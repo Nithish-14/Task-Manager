@@ -168,18 +168,45 @@ NEXT_PUBLIC_API_URL=http://localhost:5000
 
 ## 📁 Folder Structure
 
+```
 task-manager/
-│
 ├── backend/
 │   ├── src/
+|   |   ├── config/
+│   │   ├── controllers/
+│   │   ├── entities/
+|   |   ├── middlewares/
+│   │   ├── routes/
+|   |   ├── utils/
+|   |   ├── app.ts/
+│   │   └── server.ts
 │   ├── database.sqlite
-│   ├── .env
-│
+|   ├── .env.example
+│   ├── package.json
+│   └── tsconfig.json
 ├── frontend/
 │   ├── app/
+|   |   ├── tasks/
+|   |   |    ├── add/
+|   |   |    ├── edit/
+|   |   ├── globals.css/
+|   |   ├── layout.tsx/
+|   |   ├── page.tsx/
 │   ├── components/
-│   ├── .env.local
-│
+|   |   ├── TaskForm.tsx/
+|   |   ├── DeleteConfirmModal.tsx/
+│   ├── public/
+│   ├── .env.local.example
+│   ├── package.json
+│   └── next.config.js
+├── .gitignore
 └── README.md
+```
 
 ---
+
+## 👨‍💻 Author
+
+- Nithish M  
+- GitHub: [@Nithish-14](https://github.com/Nithish-14)
+
