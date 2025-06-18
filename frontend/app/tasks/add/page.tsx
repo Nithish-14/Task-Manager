@@ -20,8 +20,8 @@ export default function AddPage() {
   };
 
   return (
-    <div className="max-w-xl mx-auto mt-10 p-6 bg-white rounded shadow">
-      <h1 className="text-2xl font-semibold mb-4">Add Task</h1>
+    <div className="form-page">
+      <h1 className="form-title">Add Task</h1>
       <TaskForm onSubmit={handleCreate} />
     </div>
   );

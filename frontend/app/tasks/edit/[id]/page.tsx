@@ -49,13 +49,13 @@ export default function EditPage() {
     }
   };
 
-  if (loading) return <p className="text-center mt-10">Loading...</p>;
+  if (loading) return <p className="loading-message">Loading...</p>;
 
-  if (!task) return <p className="text-center mt-10">Task not found.</p>;
+  if (!task) return <p className="loading-message">Task not found.</p>;
 
   return (
-    <div className="max-w-xl mx-auto mt-10 p-6 bg-white rounded shadow">
-      <h1 className="text-2xl font-semibold mb-4">Edit Task</h1>
+    <div className="form-page">
+      <h1 className="form-title">Edit Task</h1>
       <TaskForm initialData={task} onSubmit={handleUpdate} isEditing />
     </div>
   );

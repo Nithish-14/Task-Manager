@@ -45,21 +45,22 @@ export default function TaskForm({ initialData, onSubmit, isEditing = false }: P
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="task-form">
       <input
-        className="w-full border px-4 py-2 rounded"
+        className="form-input"
         placeholder="Title *"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        required
       />
       <textarea
-        className="w-full border px-4 py-2 rounded"
+        className="form-textarea"
         placeholder="Description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
       <select
-        className="w-full border px-4 py-2 rounded"
+        className="form-select"
         value={status}
         onChange={(e) => setStatus(e.target.value as TaskData['status'])}
       >
@@ -69,14 +70,11 @@ export default function TaskForm({ initialData, onSubmit, isEditing = false }: P
       </select>
       <input
         type="date"
-        className="w-full border px-4 py-2 rounded"
+        className="form-input"
         value={dueDate}
         onChange={(e) => setDueDate(e.target.value)}
       />
-      <button
-        type="submit"
-        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-      >
+      <button type="submit" className="form-submit-btn">
         {isEditing ? 'Update Task' : 'Create Task'}
       </button>
     </form>

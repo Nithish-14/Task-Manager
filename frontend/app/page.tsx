@@ -20,6 +20,7 @@ export default function TasksPage() {
   const [tasks, setTasks] = useState<Task[] | null>(null);
   const [selectedTaskId, setSelectedTaskId] = useState<string | null>(null);
   const [showModal, setShowModal] = useState(false);
+  const [filter, setFilter] = useState<'all' | 'todo' | 'in_progress' | 'done'>('all');
   const router = useRouter();
 
   useEffect(() => {
@@ -48,56 +49,59 @@ export default function TasksPage() {
       });
       setTasks((prev) => prev?.filter((task) => task.id !== selectedTaskId) || []);
     } catch (error) {
-      console.error("Delete failed", error);
+      console.error('Delete failed', error);
     } finally {
       setShowModal(false);
       setSelectedTaskId(null);
     }
   };
 
+  const filteredTasks = tasks?.filter((task) => filter === 'all' || task.status === filter) ?? [];
+
   if (tasks === null) {
-    return <p className="">Loading tasks...</p>;
+    return <p className="loading">Loading tasks...</p>;
   }
 
   return (
-    <div className="">
-      <div className="">
-        <h1 className="">All Tasks</h1>
-        <button
-          onClick={() => router.push('/tasks/add')}
-          className=""
-        >
+    <div className="container">
+      <div className="header">
+        <h1 className="title">All Tasks</h1>
+        <button onClick={() => router.push('/tasks/add')} className="add-btn">
           Add Task
         </button>
       </div>
 
-      {tasks.length === 0 ? (
+      <div className="filter-buttons">
+        {['all', 'todo', 'in_progress', 'done'].map((status) => (
+          <button
+            key={status}
+            onClick={() => setFilter(status as any)}
+            className={`filter-button ${filter === status ? 'active' : ''}`}
+          >
+            {status}
+          </button>
+        ))}
+      </div>
+
+      {filteredTasks.length === 0 ? (
         <p>No tasks available.</p>
       ) : (
-        <ul className="">
-          {tasks.map((task) => (
-            <li key={task.id} className="">
-              <div className="">
+        <ul className="task-list">
+          {filteredTasks.map((task) => (
+            <li key={task.id} className="task-card">
+              <div className="task-content">
                 <div>
-                  <h2 className="">{task.title}</h2>
-                  <p className="">Status: {task.status}</p>
+                  <h2 className="task-title">{task.title}</h2>
+                  <p className="task-status">Status: {task.status}</p>
                   {task.dueDate && (
-                    <p className="">
-                      Due: {new Date(task.dueDate).toLocaleDateString()}
-                    </p>
+                    <p className="task-due">Due: {new Date(task.dueDate).toLocaleDateString()}</p>
                   )}
                 </div>
-                <div className="">
-                  <button
-                    onClick={() => router.push(`/tasks/edit/${task.id}`)}
-                    className=""
-                  >
+                <div className="task-actions">
+                  <button onClick={() => router.push(`/tasks/edit/${task.id}`)} className="edit-btn">
                     Edit
                   </button>
-                  <button
-                    onClick={() => handleDeleteClick(task.id)}
-                    className=""
-                  >
+                  <button onClick={() => handleDeleteClick(task.id)} className="delete-btn">
                     Delete
                   </button>
                 </div>
@@ -107,7 +111,6 @@ export default function TasksPage() {
         </ul>
       )}
 
-      {/* Delete Confirmation Modal */}
       <DeleteConfirmModal
         isOpen={showModal}
         onCancel={() => setShowModal(false)}
