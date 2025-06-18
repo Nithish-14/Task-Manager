@@ -97,7 +97,7 @@ npm run dev
 
 #### 5. Frontend URL
 ```bash
-http://localhost:3001
+http://localhost:3000
 ```
 
 ---
@@ -151,6 +151,12 @@ NEXT_PUBLIC_API_URL=http://localhost:5000
 ---
 
 ## 📸 Screenshots/Demo
+
+![Tasks Page](/frontend/public/Screenshot%202025-06-18%20195416.png)
+
+![New Task Page](/frontend/public/Screenshot%202025-06-18%20195434.png)
+
+![Delete Confirmation](/frontend/public/Screenshot%202025-06-18%20195444.png)
 
 ---
 
